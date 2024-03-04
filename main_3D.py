@@ -70,7 +70,7 @@ def train_3D(item = None):
     
     
     dataset_cfg['target'] = item
-    backbone_path = os.path.join("./checkpoints/backbone", "3D_"+"item"+".pt")
+    backbone_path = os.path.join("./checkpoints/backbone", "3D_"+item+".pt")
     
     
     
@@ -102,11 +102,11 @@ def train_3D(item = None):
     )
     
     # build model ------------------------------------------
-    # encoder_conv = build_convnext(device, backbone_path)
+    encoder_conv = build_convnext(device, backbone_path)
     
     
     
-    encoder_conv = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth")
+    # encoder_conv = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth")
     
     memoryBank = build_memoryBank(device, memory_dataset, 30)
     memoryBank.update(encoder_conv)
