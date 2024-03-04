@@ -104,7 +104,8 @@ def train_3D(item = None):
     # build model ------------------------------------------
     encoder_conv = build_convnext(device, backbone_path)
     
-    
+    for param in encoder_conv.named_parameters():
+        param[1].requires_grad = False
     
     # encoder_conv = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth")
     
@@ -125,6 +126,10 @@ def train_3D(item = None):
     main_model = MPNet(encoder_conv, promte_mode, memoryBank, internal_model, decoder)
     main_model.to(device)
     
+    for params in main_model.named_parameters():
+        if param[0].find("encoder") != -1:
+            param[1].requires_grad = False
+            
     
     train_step(
         model=main_model,
