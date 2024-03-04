@@ -179,4 +179,4 @@ if __name__ == "__main__":
     
     # pretrained_step()
     item = 'transistor'
-    train(feature_exe="./checkpoints/swin_encoder.pt", item = item )
+    train(feature_exe="./checkpoints/convnext_base_1k_224.pth", item = item )

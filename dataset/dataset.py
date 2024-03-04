@@ -307,8 +307,8 @@ class MVTec3DDataset(Dataset):
             )
             mask = cv2.resize(mask, dsize=(self.resize[1], self.resize[0])).astype(np.bool_).astype(np.int_)
 
-        # self.anomaly_switch = True if random.randint(0,10) > 5 else False 
-        self.anomaly_switch = True
+        self.anomaly_switch = True if random.randint(0,10) > 5 else False 
+        # self.anomaly_switch = True
         
         ## anomaly source
         if not self.to_memory and self.train:
