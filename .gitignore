@@ -10,3 +10,4 @@ pic
 test*.py
 test*.ipynb
 *.jpg
+*.sh
