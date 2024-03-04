@@ -34,7 +34,7 @@ def pretrain(target = None):
 
     dataset = build_dataset_3D_pretrained(**dataset3D_cfg)
     dataLoader = build_dataLoader_3D_pretrained(dataset)
-    convnext_backbone = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth")
+    convnext_backbone = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth", need_del=True)
     resnet_decoder = build_resnetDecoder(device)
 
     pretrained_model = build_pretrained(convnext_backbone, resnet_decoder, device)

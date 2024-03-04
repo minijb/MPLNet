@@ -23,7 +23,7 @@ def build_swin(device , pretrained: str):
     
     return model
 
-def build_convnext(device, pretrained: str):
+def build_convnext(device, pretrained: str, need_del = False):
     model = ConvNeXt(        
         in_chans=3,
         depths=[3, 3, 27, 3], 
@@ -35,7 +35,7 @@ def build_convnext(device, pretrained: str):
     
     if device:
         model.to(device)
-    if pretrained:
+    if pretrained and need_del:
         model_stateDict = model.state_dict()
         stateDict = update_stateDict(model_stateDict, torch.load(pretrained)['model']) 
         model_stateDict.update(stateDict)
