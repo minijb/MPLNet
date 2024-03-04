@@ -127,9 +127,11 @@ def train_3D(item = None):
     main_model.to(device)
     
     for params in main_model.named_parameters():
-        if param[0].find("encoder") != -1:
-            param[1].requires_grad = False
+        if params[0].find("encoder") != -1:
+            print(param[0])
+            params[1].requires_grad = False
             
+
     
     train_step(
         model=main_model,
