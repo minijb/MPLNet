@@ -52,7 +52,7 @@ def pretrain(target = None):
 
         savedir=trace_dir,
     )
-    torch.save(convnext_backbone.state_dict(),"./checkpoints/backbone/3D_"+target+".pt")
+    torch.save(convnext_backbone.state_dict(),"./checkpoints/backbone/3D_"+target+"_no_trans"+".pt")
 
 
 
@@ -104,8 +104,6 @@ def train_3D(item = None):
     # build model ------------------------------------------
     encoder_conv = build_convnext(device, backbone_path)
     
-    for param in encoder_conv.named_parameters():
-        param[1].requires_grad = False
     
     # encoder_conv = build_convnext(device, "./checkpoints/convnext_base_1k_224.pth")
     
@@ -128,7 +126,7 @@ def train_3D(item = None):
     
     for params in main_model.named_parameters():
         if params[0].find("encoder") != -1:
-            print(param[0])
+            print(params[0])
             params[1].requires_grad = False
             
 
