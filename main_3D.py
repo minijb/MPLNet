@@ -69,7 +69,7 @@ def train_3D(item = None):
         wandb_init("3D", "train_"+item+tail, train_cfg_main['train'])
     
     
-    dataset_cfg['target'] = item
+    dataset3D_cfg['target'] = item
     backbone_path = os.path.join("./checkpoints/backbone", "3D_"+item+".pt")
     
     
